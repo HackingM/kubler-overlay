@@ -18,7 +18,7 @@ else
 	SRC_URI="https://github.com/edannenberg/kubler/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
 fi
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS="~amd64"
 IUSE="+docker podman +rlwrap"
 SLOT="0"
 
