@@ -11,22 +11,21 @@ inherit bash-completion-r1
 
 if [[ ${PV} = *9999* ]]; then
 	inherit git-r3
-	EGIT_REPO_URI='https://github.com/edannenberg/kubler'
+	EGIT_REPO_URI="https://github.com/HackingM/kubler"
+	EGIT_BRANCH="master"
 else
-	inherit vcs-snapshot
-	EGIT_COMMIT="n/a"
-	SRC_URI="https://github.com/edannenberg/kubler/archive/${EGIT_COMMIT}.tar.gz -> ${P}.tar.gz"
+	SRC_URI="https://github.com/HackingM/kubler/archive/${PV}.tar.gz -> ${P}.tar.gz"
 fi
 
-KEYWORDS="~alpha ~amd64 ~arm ~arm64 ~ia64 ~ppc ~sparc ~x86"
+KEYWORDS=""
 IUSE="+docker podman +rlwrap"
 SLOT="0"
 
 DEPEND=""
 RDEPEND="dev-vcs/git
-         docker? ( app-emulation/docker app-misc/jq )
-         podman? ( app-emulation/libpod )
-         rlwrap? ( app-misc/rlwrap )"
+		 docker? ( app-emulation/docker app-misc/jq )
+		 podman? ( app-emulation/libpod )
+		 rlwrap? ( app-misc/rlwrap )"
 
 src_install() {
 	insinto /usr/share/${PN}
