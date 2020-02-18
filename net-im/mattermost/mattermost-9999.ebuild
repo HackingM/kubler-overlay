@@ -31,7 +31,7 @@ SLOT="0"
 KEYWORDS="~amd64"
 IUSE="+minimal"
 
-DEPEND="dev-lang/go net-libs/nodejs sys-apps/yarn <=media-libs/libpng-1.5.0 sys-apps/yarn app-arch/zip"
+DEPEND="dev-lang/go net-libs/nodejs sys-apps/yarn media-libs/libpng-compat sys-apps/yarn app-arch/zip dev-lang/nasm media-gfx/pngquant"
 RDEPEND=""
 
 pkg_setup() {
@@ -53,7 +53,7 @@ src_unpack() {
 
 src_prepare()
 {
-	epatch "${FILESDIR}/package-individual-platforms.patch"
+	epatch "${FILESDIR}/package-individual-platforms-5.16.patch"
 	default
 }
 
@@ -63,7 +63,7 @@ src_compile() {
 	make build package || die
 	cd "${S}"
 	mv config/default.json config/config.json
-	env GOPATH="${WORKDIR}/${P}" make build-linux package-linux || die
+	env GOPATH="${WORKDIR}/${P}" make LDFLAGS="" build-linux package-linux || die
 }
 
 src_install() {
