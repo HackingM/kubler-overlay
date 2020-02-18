@@ -18,14 +18,17 @@ else
 fi
 
 KEYWORDS=""
-IUSE="+docker podman +rlwrap"
+IUSE="+docker podman +rlwrap test"
 SLOT="0"
 
-DEPEND=""
 RDEPEND="dev-vcs/git
-		 docker? ( app-emulation/docker app-misc/jq )
-		 podman? ( app-emulation/libpod )
-		 rlwrap? ( app-misc/rlwrap )"
+	docker? ( app-emulation/docker app-misc/jq )
+	podman? ( app-emulation/libpod )
+	rlwrap? ( app-misc/rlwrap )"
+DEPEND="test? (
+	${RDEPEND}
+	dev-util/bats-assert
+	dev-util/bats-file )"
 
 src_install() {
 	insinto /usr/share/${PN}
