@@ -30,6 +30,12 @@ DEPEND="test? (
 	dev-util/bats-assert
 	dev-util/bats-file )"
 
+src_test() {
+	whoami
+	groups
+	bats --recursive --tap tests || die "Tests failed"
+}
+
 src_install() {
 	insinto /usr/share/${PN}
 	doins -r bin/ cmd/ engine/ lib/ template/ kubler.conf kubler.sh README.md COPYING
