@@ -27,6 +27,7 @@ RDEPEND="dev-vcs/git
 	rlwrap? ( app-misc/rlwrap )"
 DEPEND="test? (
 	${RDEPEND}
+	dev-tcltk/expect
 	dev-util/bats-assert
 	dev-util/bats-file )"
 
