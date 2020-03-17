@@ -32,8 +32,6 @@ DEPEND="test? (
 	dev-util/bats-file )"
 
 src_test() {
-	whoami
-	groups
 	bats --recursive --tap tests || die "Tests failed"
 }
 
